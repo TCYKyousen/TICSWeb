@@ -4,7 +4,7 @@ transition: fade
 
 hero:
   name: "星轨旅行奇想社"
-  text: "(原提瓦特文化科学研究院)<br>以创意与热爱重塑提瓦特的二创组织"
+  text: "以创意与热爱重塑提瓦特的二创组织"
   tagline: "与你一起去学习，与你去看高山大海，带你去吃世界美味"
   actions:
     - theme: brand
