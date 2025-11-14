@@ -213,6 +213,32 @@ a:hover::after {
   animation: floatingAnimation 5s ease-in-out infinite;
 }
 
+/* Hero Section Subtitle Font Size */
+.VPHero span.text {
+  width: fit-content;
+  max-width: 392px;
+  letter-spacing: -0.4px;
+  line-height: 40px;
+  font-size: 24px;
+  font-weight: 700;
+  white-space: pre-wrap;
+}
+
+@media (min-width: 640px) {
+  .VPHero span.text {
+    max-width: 576px;
+    line-height: 56px;
+    font-size: 36px;
+  }
+}
+
+@media (min-width: 960px) {
+  .VPHero span.text {
+    line-height: 64px;
+    font-size: 44px;
+  }
+}
+
 /* Enhanced Search Box Animation */
 .VPNavBarSearch {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -396,17 +422,17 @@ img:hover {
 
 /* 默认隐藏导航文字 - 只隐藏主导航栏的链接文字 */
 .VPNavBarMenuLink.has-nav-icon .VPText,
-.VPNavBarMenuLink.has-nav-icon > span:not(.nav-icon-svg),
-.VPNavBarMenuLink.has-nav-icon > a > span:not(.nav-icon-svg) {
+.VPNavBarMenuLink.has-nav-icon>span:not(.nav-icon-svg),
+.VPNavBarMenuLink.has-nav-icon>a>span:not(.nav-icon-svg) {
   opacity: 0 !important;
   max-width: 0 !important;
   width: 0 !important;
   overflow: hidden !important;
   white-space: nowrap;
-  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
-              max-width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              margin-left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    max-width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    margin-left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   margin-left: 0 !important;
   padding: 0 !important;
   display: inline-block;
@@ -417,31 +443,36 @@ img:hover {
 
 /* 下拉菜单项也使用图标模式 */
 .VPNavBarMenuDropdownItem .has-nav-icon .VPText,
-.VPNavBarMenuDropdownItem .has-nav-icon > span:not(.nav-icon-svg),
-.VPNavBarMenuDropdownItem .has-nav-icon > a > span:not(.nav-icon-svg),
+.VPNavBarMenuDropdownItem .has-nav-icon>span:not(.nav-icon-svg),
+.VPNavBarMenuDropdownItem .has-nav-icon>a>span:not(.nav-icon-svg),
 .VPNavBarMenuGroupContent .has-nav-icon .VPText,
-.VPNavBarMenuGroupContent .has-nav-icon > span:not(.nav-icon-svg),
-.VPNavBarMenuGroupContent .has-nav-icon > a > span:not(.nav-icon-svg) {
+.VPNavBarMenuGroupContent .has-nav-icon>span:not(.nav-icon-svg),
+.VPNavBarMenuGroupContent .has-nav-icon>a>span:not(.nav-icon-svg) {
   opacity: 0 !important;
   max-width: 0 !important;
   width: 0 !important;
   overflow: hidden !important;
   white-space: nowrap;
-  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
-              max-width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              margin-left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    max-width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    margin-left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   margin-left: 0 !important;
   padding: 0 !important;
   display: inline-block;
 }
 
 .VPNavBarMenuDropdownItem .has-nav-icon:hover .VPText {}
-.VPNavBarMenuDropdownItem .has-nav-icon:hover > span:not(.nav-icon-svg) {}
-.VPNavBarMenuDropdownItem .has-nav-icon:hover > a > span:not(.nav-icon-svg) {}
+
+.VPNavBarMenuDropdownItem .has-nav-icon:hover>span:not(.nav-icon-svg) {}
+
+.VPNavBarMenuDropdownItem .has-nav-icon:hover>a>span:not(.nav-icon-svg) {}
+
 .VPNavBarMenuGroupContent .has-nav-icon:hover .VPText {}
-.VPNavBarMenuGroupContent .has-nav-icon:hover > span:not(.nav-icon-svg) {}
-.VPNavBarMenuGroupContent .has-nav-icon:hover > a > span:not(.nav-icon-svg) {}
+
+.VPNavBarMenuGroupContent .has-nav-icon:hover>span:not(.nav-icon-svg) {}
+
+.VPNavBarMenuGroupContent .has-nav-icon:hover>a>span:not(.nav-icon-svg) {}
 
 .VPNavBarMenuDropdownItem .VPNavBarMenuLink .nav-icon-svg,
 .VPNavBarMenuDropdownItem a .nav-icon-svg,
@@ -458,8 +489,11 @@ img:hover {
 }
 
 .VPNavBarMenuDropdownItem .VPNavBarMenuLink:hover .nav-icon-svg {}
+
 .VPNavBarMenuDropdownItem a:hover .nav-icon-svg {}
+
 .VPNavBarMenuGroupContent .VPNavBarMenuLink:hover .nav-icon-svg {}
+
 .VPNavBarMenuGroupContent a:hover .nav-icon-svg {}
 
 .VPNavBarMenuDropdownItem .nav-icon-svg svg,
@@ -471,7 +505,7 @@ img:hover {
 
 /* 下拉菜单标题也使用图标模式 */
 .VPNavBarMenuItem:not(.VPNavBarMenuDropdownItem) .VPNavBarMenuLink.has-nav-icon .VPText,
-.VPNavBarMenuItem:not(.VPNavBarMenuDropdownItem) .VPNavBarMenuLink.has-nav-icon > span:not(.nav-icon-svg) {
+.VPNavBarMenuItem:not(.VPNavBarMenuDropdownItem) .VPNavBarMenuLink.has-nav-icon>span:not(.nav-icon-svg) {
   opacity: 0;
   max-width: 0;
   width: 0;
@@ -483,7 +517,8 @@ img:hover {
 }
 
 .VPNavBarMenuItem:not(.VPNavBarMenuDropdownItem) .VPNavBarMenuLink.has-nav-icon:hover .VPText {}
-.VPNavBarMenuItem:not(.VPNavBarMenuDropdownItem) .VPNavBarMenuLink.has-nav-icon:hover > span:not(.nav-icon-svg) {}
+
+.VPNavBarMenuItem:not(.VPNavBarMenuDropdownItem) .VPNavBarMenuLink.has-nav-icon:hover>span:not(.nav-icon-svg) {}
 
 /* Dropdown Menu Animations - 从图标位置展开和收起 */
 .VPNavBarMenuGroup {
@@ -497,7 +532,7 @@ img:hover {
   /* 初始状态：缩小并稍微向上偏移 */
   transform: scale(0.88) translateY(-6px) translateX(-2px);
   transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
   will-change: opacity, transform;
 }
@@ -515,7 +550,7 @@ img:hover {
 /* 收起动画 - 使用不同的缓动曲线，让收起更快 */
 .VPNavBarMenuGroup:not(:hover):not([aria-expanded="true"]):not(.active) .VPNavBarMenuGroupContent {
   transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-              transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* 确保下拉菜单定位相对于图标 */
@@ -570,7 +605,7 @@ img:hover {
 :root {
   --vp-font-family-base: 'MiSans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   --vp-font-family-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-  
+
   --vp-c-brand: #00999F;
   --vp-c-brand-light: #2FAEAB;
   --vp-c-brand-lighter: #5EC3BC;
@@ -582,7 +617,7 @@ img:hover {
   --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #00999F 30%, #5EC3BC);
   --vp-home-hero-image-background-image: linear-gradient(-45deg, #00999F 50%, #5EC3BC 50%);
   --vp-home-hero-image-filter: blur(40px);
-  
+
   /* VitePress 全局强调色 */
   --vp-c-brand-1: #00999F;
   --vp-c-brand-2: #2FAEAB;
@@ -630,14 +665,17 @@ img:hover {
   -webkit-backdrop-filter: blur(10px) !important;
   border-bottom: 1px solid rgba(0, 153, 159, 0.1) !important;
   position: fixed !important;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 10001 !important;
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
 }
 
-.VPNavBarHamburger[aria-expanded="true"] ~ .VPNavScreen {
+.VPNavBarHamburger[aria-expanded="true"]~.VPNavScreen {
   opacity: 1 !important;
   visibility: visible !important;
   pointer-events: auto !important;
@@ -679,15 +717,34 @@ img:hover {
 }
 
 html.zh-traditional {
-  --vp-font-family-base: 'MiSans','Yu Gothic UI','Meiryo', 'Noto Sans JP',-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-}
-:root {
+  --vp-font-family-base: 'MiSans', 'Yu Gothic UI', 'Meiryo', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
 .VPNav {
   background: var(--vp-c-bg) !important;
   border-bottom: 1px solid var(--vp-c-divider) !important;
 }
+
 /* join_us overlay */
-.join-overlay{position:fixed;top:var(--vp-nav-height,56px);left:0;right:0;bottom:0;background:rgba(0,0,0,.65);z-index:9999;display:flex;align-items:center;justify-content:center}
-.join-overlay-content{color:#fff;font-size:24px;padding:24px 32px;border-radius:12px;background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(4px)}
+.join-overlay {
+  position: fixed;
+  top: var(--vp-nav-height, 56px);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .65);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.join-overlay-content {
+  color: #fff;
+  font-size: 24px;
+  padding: 24px 32px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, .2);
+  border: 1px solid rgba(255, 255, 255, .2);
+  backdrop-filter: blur(4px)
+}

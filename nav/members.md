@@ -31,12 +31,12 @@ const members = [
     title: '运营宣传部负责人',
     desc: '2024年7月加入原提教社，曾为社内提供技术支持，主管运营宣传工作'
   },
-  {
-    avatar: 'https://q.qlogo.cn/g?b=qq&nk=3398097759&s=100?t=' + getDateTime(),
-    name: '叶',
-    title: '历史项目组负责人',
-    desc: '2024年7月加入原提教社，为全社的项目规划和内容编辑做出贡献'
-  },
+  // {
+  //   avatar: 'https://q.qlogo.cn/g?b=qq&nk=3398097759&s=100?t=' + getDateTime(),
+  //   name: '叶',
+  //   title: '历史项目组负责人',
+  //   desc: '2024年7月加入原提教社，为全社的项目规划和内容编辑做出贡献'
+  // },
   {
     avatar: 'https://q.qlogo.cn/g?b=qq&nk=3979890970&s=100?t=' + getDateTime(),
     name: '黑默',
