@@ -366,124 +366,8 @@ img:hover {
 }
 
 /* Navigation Menu Item Animations */
-.VPNavBarMenuLink {
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
-  overflow: visible;
-}
-
-.VPNavBarMenuLink:hover {
-  transform: translateY(-1px);
-}
-
-/* 导航图标样式 - 默认只显示图标 */
-.VPNavBarMenuLink .nav-icon-svg {
-  display: inline-flex !important;
-  align-items: center;
-  vertical-align: middle;
-  margin-right: 0;
-  flex-shrink: 0;
-  width: 20px;
-  height: 20px;
-  opacity: 1 !important;
-}
-
-.VPNavBarMenuLink .nav-icon-svg svg {
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
-}
-
-/* 默认隐藏导航文字 - 只隐藏主导航栏的链接文字 */
-.VPNavBarMenuLink.has-nav-icon .VPText,
-.VPNavBarMenuLink.has-nav-icon > span:not(.nav-icon-svg),
-.VPNavBarMenuLink.has-nav-icon > a > span:not(.nav-icon-svg) {
-  opacity: 0 !important;
-  max-width: 0 !important;
-  width: 0 !important;
-  overflow: hidden !important;
-  white-space: nowrap;
-  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
-              max-width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              margin-left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  margin-left: 0 !important;
-  padding: 0 !important;
-  display: inline-block;
-}
-
-/* 鼠标悬停时显示文字 */
-.VPNavBarMenuLink:hover .nav-icon-svg {}
-
-/* 下拉菜单项也使用图标模式 */
-.VPNavBarMenuDropdownItem .has-nav-icon .VPText,
-.VPNavBarMenuDropdownItem .has-nav-icon > span:not(.nav-icon-svg),
-.VPNavBarMenuDropdownItem .has-nav-icon > a > span:not(.nav-icon-svg),
-.VPNavBarMenuGroupContent .has-nav-icon .VPText,
-.VPNavBarMenuGroupContent .has-nav-icon > span:not(.nav-icon-svg),
-.VPNavBarMenuGroupContent .has-nav-icon > a > span:not(.nav-icon-svg) {
-  opacity: 0 !important;
-  max-width: 0 !important;
-  width: 0 !important;
-  overflow: hidden !important;
-  white-space: nowrap;
-  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
-              max-width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              margin-left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  margin-left: 0 !important;
-  padding: 0 !important;
-  display: inline-block;
-}
-
-.VPNavBarMenuDropdownItem .has-nav-icon:hover .VPText {}
-.VPNavBarMenuDropdownItem .has-nav-icon:hover > span:not(.nav-icon-svg) {}
-.VPNavBarMenuDropdownItem .has-nav-icon:hover > a > span:not(.nav-icon-svg) {}
-.VPNavBarMenuGroupContent .has-nav-icon:hover .VPText {}
-.VPNavBarMenuGroupContent .has-nav-icon:hover > span:not(.nav-icon-svg) {}
-.VPNavBarMenuGroupContent .has-nav-icon:hover > a > span:not(.nav-icon-svg) {}
-
-.VPNavBarMenuDropdownItem .VPNavBarMenuLink .nav-icon-svg,
-.VPNavBarMenuDropdownItem a .nav-icon-svg,
-.VPNavBarMenuGroupContent .VPNavBarMenuLink .nav-icon-svg,
-.VPNavBarMenuGroupContent a .nav-icon-svg {
-  margin-right: 0 !important;
-  display: inline-flex !important;
-  align-items: center;
-  vertical-align: middle;
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-  opacity: 1 !important;
-}
-
-.VPNavBarMenuDropdownItem .VPNavBarMenuLink:hover .nav-icon-svg {}
-.VPNavBarMenuDropdownItem a:hover .nav-icon-svg {}
-.VPNavBarMenuGroupContent .VPNavBarMenuLink:hover .nav-icon-svg {}
-.VPNavBarMenuGroupContent a:hover .nav-icon-svg {}
-
-.VPNavBarMenuDropdownItem .nav-icon-svg svg,
-.VPNavBarMenuGroupContent .nav-icon-svg svg {
-  width: 16px;
-  height: 16px;
-  fill: currentColor;
-}
-
-/* 下拉菜单标题也使用图标模式 */
-.VPNavBarMenuItem:not(.VPNavBarMenuDropdownItem) .VPNavBarMenuLink.has-nav-icon .VPText,
-.VPNavBarMenuItem:not(.VPNavBarMenuDropdownItem) .VPNavBarMenuLink.has-nav-icon > span:not(.nav-icon-svg) {
-  opacity: 0;
-  max-width: 0;
-  width: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  margin-left: 0;
-  display: inline-block;
-}
-
-.VPNavBarMenuItem:not(.VPNavBarMenuDropdownItem) .VPNavBarMenuLink.has-nav-icon:hover .VPText {}
-.VPNavBarMenuItem:not(.VPNavBarMenuDropdownItem) .VPNavBarMenuLink.has-nav-icon:hover > span:not(.nav-icon-svg) {}
+.VPNavBarMenuLink{transition:all 0.2s cubic-bezier(0.16, 1, 0.3, 1);position:relative;overflow:visible}
+.VPNavBarMenuLink:hover{transform:translateY(-1px)}
 
 /* Dropdown Menu Animations - 从图标位置展开和收起 */
 .VPNavBarMenuGroup {
@@ -577,7 +461,7 @@ img:hover {
   --vp-c-brand-dark: #00999F;
   --vp-c-brand-darker: #00999F;
   --vp-nav-logo-height: 24px;
-  --vp-nav-height: 64px;
+  --vp-nav-height: 70px;
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #00999F 30%, #5EC3BC);
   --vp-home-hero-image-background-image: linear-gradient(-45deg, #00999F 50%, #5EC3BC 50%);
@@ -630,7 +514,7 @@ img:hover {
   -webkit-backdrop-filter: blur(10px) !important;
   border-bottom: 1px solid rgba(0, 153, 159, 0.1) !important;
   position: fixed !important;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: var(--vp-nav-height); left: 0; right: 0; bottom: 0;
   z-index: 10001 !important;
   opacity: 0 !important;
   visibility: hidden !important;
@@ -674,7 +558,7 @@ img:hover {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #00999F, #5EC3BC);
+  background: linear-gradient(to bottom, #00999f, #5EC3BC);
   opacity: 0.9;
 }
 
@@ -682,6 +566,8 @@ html.zh-traditional {
   --vp-font-family-base: 'MiSans','Yu Gothic UI','Meiryo', 'Noto Sans JP',-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 :root {
+  --global-banner-height: 40px;
+  --vp-nav-height: 70px;
 }
 
 .VPNav {
@@ -689,5 +575,11 @@ html.zh-traditional {
   border-bottom: 1px solid var(--vp-c-divider) !important;
 }
 /* join_us overlay */
-.join-overlay{position:fixed;top:var(--vp-nav-height,56px);left:0;right:0;bottom:0;background:rgba(0,0,0,.65);z-index:9999;display:flex;align-items:center;justify-content:center}
-.join-overlay-content{color:#fff;font-size:24px;padding:24px 32px;border-radius:12px;background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(4px)}
+.ios-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;z-index:10002}
+.ios-modal{max-width:400px;border-radius:24px;background:var(--vp-c-bg-soft);box-shadow:0 20px 40px rgba(0,0,0,.35);border:1px solid var(--vp-c-divider);padding:24px 24px 28px;text-align:left}
+.ios-modal-content{width:320px;max-width:80vw;margin:0 auto}
+.ios-modal-title{font-size:18px;font-weight:700;color:var(--vp-c-text-1);margin-bottom:12px}
+.ios-modal-text{font-size:15px;color:var(--vp-c-text-1);line-height:1.7;margin:0 0 14px 0}
+.ios-modal-actions{display:flex;gap:10px;justify-content:center}
+.ios-btn{border:none;border-radius:22px;height:44px;padding:0 18px;font-size:16px;font-weight:700;width:100%}
+.ios-btn.primary{background:linear-gradient(135deg,var(--vp-c-brand),var(--vp-c-brand-2));color:#fff;box-shadow:0 6px 14px rgba(0,0,0,.2)}

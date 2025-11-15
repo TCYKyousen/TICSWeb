@@ -8,10 +8,10 @@ sidebar: false
 
 <div class="community-component">
   <div class="social-links-container">
-    <a href="https://qm.qq.com/q/CsCxCdV2H6" class="social-link" target="_blank" rel="noopener noreferrer">
+    <a href="https://qm.qq.com/q/1ipkhd5Z0Q" class="social-link" target="_blank" rel="noopener noreferrer">
       <div class="social-content">
         <div class="social-platform">聊天室</div>
-        <div class="social-handle">QQ群号：1061803793</div>
+        <div class="social-handle">QQ群号：1073025414</div>
       </div>
     </a>
   </div>

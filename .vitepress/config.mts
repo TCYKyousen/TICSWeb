@@ -133,7 +133,7 @@ export default defineConfig({
           { text: '历史研究院', link: 'https://next.tics.top/department/TIH/' }
         ]
       },
-      { text: 'V6.0.0', link: '/pages/about' },
+      { text: 'V6.1.207.DEV', link: '/pages/about' },
       { text: '招贤纳士', link: '/pages/join_us' }
     ],
     sidebar: {

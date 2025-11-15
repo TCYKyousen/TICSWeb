@@ -3,6 +3,7 @@ import { useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import { nextTick, provide, onMounted } from 'vue'
 import ChineseConverter from '@theme/components/ChineseConverter.vue'
+import NoticeManager from '@theme/NoticeManager.vue'
 
 const { isDark } = useData()
 
@@ -377,6 +378,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <NoticeManager />
   <DefaultTheme.Layout>
     <template #nav-bar-content-after>
       <div class="nav-bar-extra">

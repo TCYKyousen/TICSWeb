@@ -11,7 +11,7 @@ footer: false
         <p class="aboutPageSlogan"> ——与你一起去学习，与你去看高山大海，带你去吃世界美味</p>
         <br>
         <br>
-        <p class="aboutPageText">版本：V6.0.0 | 2025/7/19</p>
+        <p class="aboutPageText">版本：V6.1.207.DEV | 2025/11/15</p>
     </div>
 </div>
 
@@ -24,8 +24,7 @@ footer: false
     .aboutPageTitle {
         font-size: 3.5rem;
         background: linear-gradient(to right, 
-            #c273fc, 
-            #4facfe
+            #00999f, #5EC3BC
         );
         -webkit-background-clip: text;
         background-clip: text;

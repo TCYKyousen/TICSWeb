@@ -1,10 +1,12 @@
 <template>
-  <div class="members-overlay">
-    <div class="overlay-content">
-      我社正发生大规模人事变动，具体人事详情尚未统计完毕，故该页面暂时不进行展示。
-      <div class="overlay-actions">
-        <a href="/" class="VPButton brand">返回首页</a>
-        <button class="VPButton alt" @click="goBack">返回上一页</button>
+  <div class="ios-modal-overlay">
+    <div class="ios-modal">
+      <div class="ios-modal-content">
+        <div class="ios-modal-title">提醒</div>
+        <div class="ios-modal-text">我社正发生大规模人事变动，具体人事详情尚未统计完毕，故该页面暂时不进行展示。</div>
+        <div class="ios-modal-actions">
+          <button class="ios-btn primary" @click="goBack">我知道了</button>
+        </div>
       </div>
     </div>
   </div>
@@ -21,78 +23,12 @@ const goBack = () => {
 </script>
 
 <style scoped>
-.members-overlay {
-  position: fixed;
-  top: var(--vp-nav-height, 64px);
-  left: var(--vp-sidebar-width, 0);
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(4px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9000;
-  overflow: hidden;
-}
-
-.overlay-content {
-  color: white;
-  font-size: 1.5rem;
-  text-align: center;
-  padding: 2rem;
-  max-width: 80%;
-  line-height: 1.6;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 1rem;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-}
-
-.overlay-actions {
-  margin-top: 1.5rem;
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.overlay-actions .VPButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 144px;
-  height: 44px;
-  padding: 0 16px;
-  border-radius: 9999px;
-  text-decoration: none;
-}
-
-@media (max-width: 480px) {
-  .overlay-actions .VPButton {
-    min-width: 128px;
-    height: 40px;
-    padding: 0 14px;
-  }
-}
-
-@media (max-width: 768px) {
-  .members-overlay {
-    top: 0;
-    left: 0;
-    z-index: 10000;
-  }
-  .overlay-content {
-    font-size: 1.2rem;
-    padding: 1.25rem;
-    max-width: 92%;
-  }
-}
-
-@media (max-width: 480px) {
-  .overlay-content {
-    font-size: 1rem;
-    padding: 1rem;
-    max-width: 96%;
-  }
-}
+.ios-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;z-index:10002}
+.ios-modal{max-width:400px;border-radius:24px;background:var(--vp-c-bg-soft);box-shadow:0 20px 40px rgba(0,0,0,.35);border:1px solid var(--vp-c-divider);padding:24px 24px 28px;text-align:left}
+.ios-modal-content{width:320px;max-width:80vw;margin:0 auto}
+.ios-modal-title{font-size:18px;font-weight:700;color:var(--vp-c-text-1);margin-bottom:12px}
+.ios-modal-text{font-size:15px;color:var(--vp-c-text-1);line-height:1.7;margin:0 0 14px 0}
+.ios-modal-actions{display:flex;gap:10px;justify-content:center}
+.ios-btn{border:none;border-radius:22px;height:44px;padding:0 18px;font-size:16px;font-weight:700;width:100%}
+.ios-btn.primary{background:linear-gradient(135deg,var(--vp-c-brand),var(--vp-c-brand-2));color:#fff;box-shadow:0 6px 14px rgba(0,0,0,.2)}
 </style>
