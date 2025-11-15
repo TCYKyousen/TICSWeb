@@ -533,6 +533,38 @@ img:hover {
   opacity: 1;
 }
 
+/* 移动端汉堡菜单按钮增强 */
+.VPNavBarHamburger {
+  position: relative;
+  z-index: 10002 !important;
+}
+
+.VPNavBarHamburger .container {
+  transition: all 0.3s ease;
+}
+
+.VPNavBarHamburger[aria-expanded="true"] .container {
+  opacity: 1;
+}
+
+/* 确保移动端菜单内容可见 */
+.VPNavScreen .VPNavScreenMenu {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* 移动端菜单项样式增强 */
+.VPNavScreenMenu .VPNavScreenMenuLink {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* 修复可能的层叠上下文问题 */
+.VPNav {
+  position: relative;
+  z-index: 1000;
+}
+
 /* 导航菜单亚克力效果 */
 .VPNavScreen {
   background: rgba(255, 255, 255, 0.7) !important;
@@ -545,13 +577,20 @@ img:hover {
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
+  transform: translateX(100%) !important;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease !important;
 }
 
+<<<<<<< Updated upstream
 .VPNavBarHamburger[aria-expanded="true"]~.VPNavScreen {
+=======
+.VPNavBarHamburger[aria-expanded="true"] + .VPNavScreen,
+.VPNavScreen.open {
+>>>>>>> Stashed changes
   opacity: 1 !important;
   visibility: visible !important;
   pointer-events: auto !important;
-  transform: none !important;
+  transform: translateX(0) !important;
 }
 
 

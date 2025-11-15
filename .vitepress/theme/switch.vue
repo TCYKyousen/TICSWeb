@@ -1,11 +1,37 @@
 <script setup lang="ts">
 import { useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
-import { nextTick, provide, onMounted } from 'vue'
+import { nextTick, provide, onMounted, ref } from 'vue'
 import ChineseConverter from '@theme/components/ChineseConverter.vue'
 import NoticeManager from '@theme/NoticeManager.vue'
+import MobileMenu from '@theme/components/MobileMenu.vue'
 
 const { isDark } = useData()
+
+// 移动端菜单状态
+const isMobileMenuOpen = ref(false)
+
+const openMobileMenu = () => {
+  isMobileMenuOpen.value = true
+  document.body.style.overflow = 'hidden'
+  // 添加active类到自定义汉堡按钮
+  const customTrigger = document.querySelector('.custom-mobile-menu-trigger')
+  if (customTrigger) {
+    customTrigger.classList.add('active')
+  }
+  document.documentElement.classList.add('mobile-menu-open')
+}
+
+const closeMobileMenu = () => {
+  isMobileMenuOpen.value = false
+  document.body.style.overflow = ''
+  // 移除active类从自定义汉堡按钮
+  const customTrigger = document.querySelector('.custom-mobile-menu-trigger')
+  if (customTrigger) {
+    customTrigger.classList.remove('active')
+  }
+  document.documentElement.classList.remove('mobile-menu-open')
+}
 
 const enableTransitions = () =>
   'startViewTransition' in document &&
@@ -38,6 +64,31 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
       pseudoElement: `::view-transition-${isDark.value ? 'old' : 'new'}(root)`
     }
   )
+})
+
+onMounted(() => {
+  const hidePcNavbarItems = () => {
+    const selectors = [
+      '.VPNavBarMenu',
+      '.VPNavBarMenuLink',
+      '.VPNavBarMenuGroup',
+      '.VPNavBarMenuGroupContent',
+      '.VPNavBarNav',
+      '.VPNavBarExtra',
+      '.VPNavBarSearch',
+      '.VPSocialLinks',
+      '.VPNavBarAppearance',
+      '.VPNavBarLocaleMenu'
+    ]
+    selectors.forEach(sel => {
+      document.querySelectorAll(sel).forEach(el => {
+        (el as HTMLElement).style.display = 'none'
+      })
+    })
+  }
+  hidePcNavbarItems()
+  const obs = new MutationObserver(() => hidePcNavbarItems())
+  obs.observe(document.body, { childList: true, subtree: true })
 })
 
 const iconMap: Record<string, string> = {
@@ -276,6 +327,44 @@ onMounted(() => {
   let retryCount = 0
   const maxRetries = 100
 
+  // 替换原生移动端菜单为自定义菜单
+  const replaceNativeMobileMenu = () => {
+    // 等待DOM加载完成
+    setTimeout(() => {
+      const hamburger = document.querySelector('.VPNavBarHamburger')
+      const navBarExtra = document.querySelector('.VPNavBarExtra')
+      
+      if (navBarExtra) {
+        // 创建自定义汉堡按钮 - 更现代的设计
+        const customHamburger = document.createElement('button')
+        customHamburger.className = 'VPNavBarHamburger custom-mobile-menu-trigger'
+        customHamburger.setAttribute('type', 'button')
+        customHamburger.setAttribute('aria-label', '打开菜单')
+        customHamburger.innerHTML = `
+          <div class="hamburger-icon">
+            <span class="line top"></span>
+            <span class="line middle"></span>
+            <span class="line bottom"></span>
+          </div>
+        `
+        
+        // 将自定义按钮插入到导航栏额外内容区域前面
+        navBarExtra.parentNode?.insertBefore(customHamburger, navBarExtra)
+        
+        if (hamburger) {
+          hamburger.style.display = 'none'
+        }
+        
+        // 添加点击事件
+        customHamburger.addEventListener('click', () => {
+          openMobileMenu()
+        })
+        
+        console.log('[MobileMenu] 成功替换原生移动端菜单')
+      }
+    }, 1000)
+  }
+
   const tryAddIcons = () => {
     // 检查文档是否完全加载
     if (document.readyState !== 'complete') {
@@ -290,6 +379,9 @@ onMounted(() => {
       setTimeout(tryAddIcons, 100)
       return
     }
+
+    // 替换原生移动端菜单
+    replaceNativeMobileMenu()
 
     const added = addNavIcons()
     
@@ -348,6 +440,8 @@ onMounted(() => {
       const handleRouteChange = () => {
         setTimeout(() => {
           addNavIcons()
+          // 路由变化时重新修复移动端菜单
+          setTimeout(fixMobileMenu, 100)
         }, 200)
       }
       
@@ -379,13 +473,11 @@ onMounted(() => {
 
 <template>
   <NoticeManager />
-  <DefaultTheme.Layout>
-    <template #nav-bar-content-after>
-      <div class="nav-bar-extra">
-        <ChineseConverter />
-      </div>
-    </template>
-  </DefaultTheme.Layout>
+  <DefaultTheme.Layout />
+  <ChineseConverter style="display:none" />
+  
+  <!-- 自定义移动端菜单 -->
+  <MobileMenu :is-open="isMobileMenuOpen" @close="closeMobileMenu" />
 </template>
 
 <style>
@@ -405,6 +497,11 @@ onMounted(() => {
   z-index: 0;
 }
 
+.chinese-converting body {
+  opacity: 0.92;
+  transition: opacity 0.12s ease;
+}
+
 .VPSwitchAppearance {
   width: 22px !important;
 }
@@ -413,9 +510,132 @@ onMounted(() => {
   transform: none !important;
 }
 
-.nav-bar-extra {
-  display: flex;
-  align-items: center;
-  margin-left: 8px;
+/* 自定义移动端汉堡菜单按钮样式 - 现代设计 */
+.custom-mobile-menu-trigger {
+  position: relative !important;
+  width: 44px !important;
+  height: 44px !important;
+  color: var(--vp-c-text-1) !important;
+  transition: all 0.3s ease !important;
+  background: none !important;
+  border: none !important;
+  padding: 8px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  margin: 0 !important;
+  border-radius: 8px !important;
+  outline: none !important;
+}
+
+.custom-mobile-menu-trigger:hover {
+  color: var(--vp-c-brand) !important;
+  background: var(--vp-c-bg-soft) !important;
+  transform: scale(1.05) !important;
+}
+
+.custom-mobile-menu-trigger:active {
+  transform: scale(0.95) !important;
+}
+
+.custom-mobile-menu-trigger:focus-visible {
+  box-shadow: 0 0 0 2px var(--vp-c-brand) !important;
+}
+
+.hamburger-icon {
+  position: relative !important;
+  width: 24px !important;
+  height: 24px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+.hamburger-icon .line {
+  width: 20px !important;
+  height: 2px !important;
+  background-color: currentColor !important;
+  border-radius: 2px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transform-origin: center !important;
+}
+
+.hamburger-icon .line.top {
+  transform: translateY(-2px) !important;
+}
+
+.hamburger-icon .line.bottom {
+  transform: translateY(2px) !important;
+}
+
+/* 菜单打开时的动画效果 */
+.custom-mobile-menu-trigger.active .hamburger-icon .line.top {
+  transform: translateY(2px) rotate(45deg) !important;
+}
+
+.custom-mobile-menu-trigger.active .hamburger-icon .line.middle {
+  opacity: 0 !important;
+  transform: scale(0) !important;
+}
+
+.custom-mobile-menu-trigger.active .hamburger-icon .line.bottom {
+  transform: translateY(-2px) rotate(-45deg) !important;
+}
+
+/* 在移动端显示自定义菜单按钮 */
+@media (max-width: 768px) {
+  .custom-mobile-menu-trigger {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  /* 隐藏原有的移动端汉堡菜单 */
+  :deep(.VPNavBarHamburger) {
+    display: none !important;
+  }
+  
+  /* 调整导航栏布局 */
+  :deep(.VPNavBar) {
+    position: relative;
+  }
+  
+  :deep(.VPNavBarTitle) {
+    flex: 1;
+  }
+  
+  :deep(.VPNavBarNav) {
+    display: none !important;
+  }
+  
+  /* 隐藏原有的额外按钮区域 */
+  :deep(.VPNavBarExtra) {
+    display: none !important;
+  }
+  /* 隐藏桌面端默认导航与语言切换等 */
+  :deep(.VPNavBarMenu),
+  :deep(.VPNavBarMenuLink),
+  :deep(.VPNavBarMenuGroup),
+  :deep(.VPNavBarMenuGroupContent),
+  :deep(.VPNavBarNav),
+  :deep(.VPNavBarExtra),
+  :deep(.VPNavBarSearch),
+  :deep(.VPSocialLinks),
+  :deep(.VPNavBarAppearance),
+  :deep(.VPNavBarLocaleMenu),
+  :deep(.VPNavBarLocales),
+  :deep(.VPLocaleSwitch),
+  :deep(.VPLocaleMenu),
+  :deep(.VPNavBarLocaleSwitch),
+  :deep(.VPNavBarLocaleSelector),
+  :deep([data-testid="locale-switch"]),
+  :deep(.VPNavBarLangSwitch) {
+    display: none !important;
+  }
+
+  .mobile-menu-open :deep(.VPNavBarTitle) {
+    display: none !important;
+  }
 }
 </style>
