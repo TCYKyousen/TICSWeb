@@ -213,6 +213,32 @@ a:hover::after {
   animation: floatingAnimation 5s ease-in-out infinite;
 }
 
+/* Hero Section Subtitle Font Size */
+.VPHero span.text {
+  width: fit-content;
+  max-width: 392px;
+  letter-spacing: -0.4px;
+  line-height: 40px;
+  font-size: 24px;
+  font-weight: 700;
+  white-space: pre-wrap;
+}
+
+@media (min-width: 640px) {
+  .VPHero span.text {
+    max-width: 576px;
+    line-height: 56px;
+    font-size: 36px;
+  }
+}
+
+@media (min-width: 960px) {
+  .VPHero span.text {
+    line-height: 64px;
+    font-size: 44px;
+  }
+}
+
 /* Enhanced Search Box Animation */
 .VPNavBarSearch {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -381,7 +407,7 @@ img:hover {
   /* 初始状态：缩小并稍微向上偏移 */
   transform: scale(0.88) translateY(-6px) translateX(-2px);
   transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
   will-change: opacity, transform;
 }
@@ -399,7 +425,7 @@ img:hover {
 /* 收起动画 - 使用不同的缓动曲线，让收起更快 */
 .VPNavBarMenuGroup:not(:hover):not([aria-expanded="true"]):not(.active) .VPNavBarMenuGroupContent {
   transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-              transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* 确保下拉菜单定位相对于图标 */
@@ -454,7 +480,7 @@ img:hover {
 :root {
   --vp-font-family-base: 'MiSans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   --vp-font-family-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-  
+
   --vp-c-brand: #00999F;
   --vp-c-brand-light: #2FAEAB;
   --vp-c-brand-lighter: #5EC3BC;
@@ -466,7 +492,7 @@ img:hover {
   --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #00999F 30%, #5EC3BC);
   --vp-home-hero-image-background-image: linear-gradient(-45deg, #00999F 50%, #5EC3BC 50%);
   --vp-home-hero-image-filter: blur(40px);
-  
+
   /* VitePress 全局强调色 */
   --vp-c-brand-1: #00999F;
   --vp-c-brand-2: #2FAEAB;
@@ -521,7 +547,7 @@ img:hover {
   pointer-events: none !important;
 }
 
-.VPNavBarHamburger[aria-expanded="true"] ~ .VPNavScreen {
+.VPNavBarHamburger[aria-expanded="true"]~.VPNavScreen {
   opacity: 1 !important;
   visibility: visible !important;
   pointer-events: auto !important;
@@ -574,12 +600,27 @@ html.zh-traditional {
   background: var(--vp-c-bg) !important;
   border-bottom: 1px solid var(--vp-c-divider) !important;
 }
+
 /* join_us overlay */
-.ios-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;z-index:10002}
-.ios-modal{max-width:400px;border-radius:24px;background:var(--vp-c-bg-soft);box-shadow:0 20px 40px rgba(0,0,0,.35);border:1px solid var(--vp-c-divider);padding:24px 24px 28px;text-align:left}
-.ios-modal-content{width:320px;max-width:80vw;margin:0 auto}
-.ios-modal-title{font-size:18px;font-weight:700;color:var(--vp-c-text-1);margin-bottom:12px}
-.ios-modal-text{font-size:15px;color:var(--vp-c-text-1);line-height:1.7;margin:0 0 14px 0}
-.ios-modal-actions{display:flex;gap:10px;justify-content:center}
-.ios-btn{border:none;border-radius:22px;height:44px;padding:0 18px;font-size:16px;font-weight:700;width:100%}
-.ios-btn.primary{background:linear-gradient(135deg,var(--vp-c-brand),var(--vp-c-brand-2));color:#fff;box-shadow:0 6px 14px rgba(0,0,0,.2)}
+.join-overlay {
+  position: fixed;
+  top: var(--vp-nav-height, 56px);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .65);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.join-overlay-content {
+  color: #fff;
+  font-size: 24px;
+  padding: 24px 32px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, .2);
+  border: 1px solid rgba(255, 255, 255, .2);
+  backdrop-filter: blur(4px)
+}
