@@ -19,6 +19,7 @@ export default {
   NotFound,
   enhanceApp(ctx: EnhanceAppContext) {
     const { app } = ctx
+    app.component('BaseLayout', (DefaultTheme as any).Layout)
     app.component('GeneralMembersList', GeneralMembersList)
     app.component('Hitokoto', Hitokoto)
     app.component('Furigana', Furigana)

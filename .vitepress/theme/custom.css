@@ -582,7 +582,12 @@ img:hover {
 }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 .VPNavBarHamburger[aria-expanded="true"]~.VPNavScreen {
+=======
+.VPNavBarHamburger[aria-expanded="true"] + .VPNavScreen,
+.VPNavScreen.open {
+>>>>>>> Stashed changes
 =======
 .VPNavBarHamburger[aria-expanded="true"] + .VPNavScreen,
 .VPNavScreen.open {

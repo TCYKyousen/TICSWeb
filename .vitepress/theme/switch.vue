@@ -1,12 +1,9 @@
 <script setup lang="ts">
-import { useData } from 'vitepress'
-import DefaultTheme from 'vitepress/theme'
 import { nextTick, provide, onMounted, ref } from 'vue'
 import ChineseConverter from '@theme/components/ChineseConverter.vue'
 import NoticeManager from '@theme/NoticeManager.vue'
 import MobileMenu from '@theme/components/MobileMenu.vue'
 
-const { isDark } = useData()
 
 // 移动端菜单状态
 const isMobileMenuOpen = ref(false)
@@ -473,7 +470,7 @@ onMounted(() => {
 
 <template>
   <NoticeManager />
-  <DefaultTheme.Layout />
+  <BaseLayout />
   <ChineseConverter style="display:none" />
   
   <!-- 自定义移动端菜单 -->
